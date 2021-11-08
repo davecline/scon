@@ -1,0 +1,27 @@
+{
+    "compilerOptions": {
+        "allowJs": true,
+        "lib": [
+            "es2017"
+        ],
+        "moduleResolution": "node",
+        "noUnusedLocals": false,
+        "noUnusedParameters": true,
+        "sourceMap": true,
+        "target": "es2017",
+        "outDir": "lib",
+        "module": "es6",
+        "noImplicitAny": true,
+        "preserveConstEnums": true      
+    },
+    "include": [
+        "./**/*.ts"
+    ],
+    "exclude": [
+        "node_modules/**/*",
+        ".serverless/**/*",
+        ".webpack/**/*",
+        "_warmup/**/*",
+        ".vscode/**/*"
+    ]
+}

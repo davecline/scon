@@ -1,0 +1,52 @@
+service: scon
+
+plugins:
+  - serverless-leo
+  - serverless-webpack
+
+package:
+  individually: true
+
+custom:
+  convention:
+    functions:
+      folders:
+        - api
+        - bots
+      pattern:
+        - '*.yml'
+    resources:
+      folders:
+        - cloudformation
+      pattern:
+        - '*.yml'
+        - '*.js'
+        - '*.json'
+        - '*.ts'
+  included: ${{file(./node_modules/serverless-convention/index.js)}}
+  test:
+    proper: Test
+    leoStack: TestBus
+  staging:
+    proper: Staging
+    leoStack: StagingBus
+  prod:
+    proper: Prod
+    leoStack: ProdBus
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  profile: serverlessUser
+  # deploymentBucket: ADD_YOUR_DEPLOYMENT_BUCKET
+  stage: ${{opt:stage, 'test'}}
+  environment:
+    LEO_ENVIRONMENT: ${{opt:stage, 'test'}}
+  region: ${{opt:region, 'us-east-1'}}
+  variableSyntax: "\\${{([ ~:a-zA-Z0-9._@\\'\",\\-\\/\\(\\)]+?)}}" # Allow Cloudformation to use ${}. Serverless will use ${{}}.
+
+functions:
+  - ${{self:custom.included.functions}} # Auto-include functions using serverless-convention
+
+resources:
+  - ${{self:custom.included.resources}} # Auto-include resources using serverless-convention
