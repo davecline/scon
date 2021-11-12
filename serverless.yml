@@ -37,7 +37,7 @@ custom:
 provider:
   name: aws
   runtime: nodejs14.x
-  profile: serverlessUser
+  profile: DaveClinePersonal
   # deploymentBucket: ADD_YOUR_DEPLOYMENT_BUCKET
   stage: ${{opt:stage, 'test'}}
   environment:

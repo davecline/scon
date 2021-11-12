@@ -15,6 +15,7 @@
   "devDependencies": {
     "@types/aws-lambda": "^8.10.51",
     "@types/node": "^13.13.52",
+    "@types/uuid": "^8.3.1",
     "aws-sdk": "^2.655.0",
     "serverless": "^2.30.3",
     "serverless-convention": "^1.1.2",

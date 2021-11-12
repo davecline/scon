@@ -1,0 +1,11 @@
+tasks_manager:
+  handler: api/tasks_manager/index.handler
+  description: api to handle managing server-side tasks
+  memorySize: 512
+  timeout: 30
+  events:
+    - http:
+        path: scon/tasks_manager
+        method: GET
+        authorizer: aws_iam
+        cors: true
